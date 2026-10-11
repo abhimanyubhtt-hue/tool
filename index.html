@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f5f5f0" />
+    <title>Daymark — your task list</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 40 40%22%3E%3Crect width=%2240%22 height=%2240%22 rx=%228%22 fill=%22%23274b3d%22/%3E%3Ccircle cx=%2220%22 cy=%2220%22 r=%226%22 fill=%22%23e5bb83%22/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="App sidebar">
+        <a class="brand" href="#" aria-label="Daymark home">
+          <span class="brand-mark" aria-hidden="true"><span></span></span>
+          <span>daymark</span>
+        </a>
+
+        <div class="sidebar-label">YOUR SPACE</div>
+        <nav class="view-nav" aria-label="Task views">
+          <button class="nav-item is-selected" type="button" data-filter="all" aria-current="page">
+            <span class="nav-icon icon-inbox" aria-hidden="true"></span>
+            <span>All tasks</span>
+            <span class="nav-count" id="all-count">0</span>
+          </button>
+          <button class="nav-item" type="button" data-filter="active">
+            <span class="nav-icon icon-sun" aria-hidden="true"></span>
+            <span>To do</span>
+            <span class="nav-count" id="active-count">0</span>
+          </button>
+          <button class="nav-item" type="button" data-filter="completed">
+            <span class="nav-icon icon-check" aria-hidden="true"></span>
+            <span>Completed</span>
+            <span class="nav-count" id="completed-count">0</span>
+          </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <span class="local-indicator" aria-hidden="true"></span>
+          <span>Saved on this device</span>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <span class="date-label" id="today-date"></span>
+          <span class="local-badge"><span aria-hidden="true"></span> Private by default</span>
+        </header>
+
+        <section class="task-area" aria-labelledby="page-title">
+          <div class="page-heading">
+            <div>
+              <p class="eyebrow">A LITTLE AT A TIME</p>
+              <h1 id="page-title">All tasks<span class="heading-period">.</span></h1>
+              <p class="heading-caption" id="task-summary">A clear space to think.</p>
+            </div>
+            <div class="progress-stamp" aria-label="Task completion">
+              <svg viewBox="0 0 76 76" role="img" aria-label="0 percent complete">
+                <circle class="progress-track" cx="38" cy="38" r="32" />
+                <circle class="progress-value" id="progress-ring" cx="38" cy="38" r="32" />
+              </svg>
+              <span class="progress-number" id="progress-number">0%</span>
+            </div>
+          </div>
+
+          <form class="add-task" id="add-form">
+            <span class="add-plus" aria-hidden="true">+</span>
+            <label class="visually-hidden" for="task-input">Add a task</label>
+            <input id="task-input" name="task" type="text" maxlength="160" placeholder="What needs doing?" autocomplete="off" required />
+            <button class="add-button" type="submit"><span aria-hidden="true">+</span> Add task</button>
+          </form>
+          <p class="storage-warning" id="storage-warning" role="status" hidden>Changes could not be saved in this browser.</p>
+
+          <div class="list-toolbar">
+            <div class="filter-tabs" role="group" aria-label="Filter tasks">
+              <button class="filter-tab is-active" type="button" data-filter="all" aria-pressed="true">All <span id="tab-all-count">0</span></button>
+              <button class="filter-tab" type="button" data-filter="active" aria-pressed="false">To do <span id="tab-active-count">0</span></button>
+              <button class="filter-tab" type="button" data-filter="completed" aria-pressed="false">Done <span id="tab-completed-count">0</span></button>
+            </div>
+            <button class="clear-button" id="clear-completed" type="button" hidden>Clear completed</button>
+          </div>
+
+          <ul class="task-list" id="task-list" aria-label="Tasks" aria-live="polite"></ul>
+          <div class="empty-state" id="empty-state">
+            <span class="empty-sun" aria-hidden="true">✳</span>
+            <p class="empty-title" id="empty-title">A fresh start.</p>
+            <p class="empty-caption" id="empty-caption">Add a task above and make today yours.</p>
+          </div>
+          <footer class="list-footer"><span id="footer-count">0 tasks</span><span>One thing at a time.</span></footer>
+        </section>
+      </main>
+      <div class="background-orbit orbit-one" aria-hidden="true"></div>
+      <div class="background-orbit orbit-two" aria-hidden="true"></div>
+    </div>
+  </body>
+</html>
